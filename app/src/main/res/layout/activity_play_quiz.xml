@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.quiz.activities.PlayQuizActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imgBackIV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/back" />
+
+            <com.quiz.font.TextViewRegular
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/play"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_25sdp" />
+
+
+            <ImageView
+                android:id="@+id/imgDashboardIV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/dashboard" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtTimeTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:text="0:00"
+            android:textColor="@color/colorSignUp"
+            android:textSize="@dimen/_35sdp" />
+
+        <com.quiz.font.TextViewRegular
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:text="@string/time_remaining"
+            android:textColor="@color/colorSignUp"
+            android:textSize="@dimen/_14sdp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_110sdp"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/buttonbg" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_50sdp"
+                    android:layout_marginLeft="@dimen/_30sdp"
+                    android:layout_marginRight="@dimen/_30sdp"
+                    android:orientation="vertical">
+
+                    <com.quiz.font.TextViewBold
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        android:background="@android:color/transparent"
+                        android:gravity="center"
+                        android:padding="@dimen/_3sdp"
+                        android:text="@string/correct_30_get_pass"
+                        android:textColor="@color/colorGreyText"
+                        android:textSize="@dimen/_15sdp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_10sdp"
+                            android:layout_weight="1"
+                            android:background="@drawable/strock_bg" />
+
+                        <com.quiz.font.TextViewMedium
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:background="@android:color/transparent"
+                            android:text="30/90"
+                            android:textColor="@color/colorGreyText"
+                            android:textSize="@dimen/_16sdp" />
+
+                    </LinearLayout>
+
+
+                    <com.quiz.font.TextViewRegular
+                        android:id="@+id/txtQuestionTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:background="@android:color/transparent"
+                        android:text=""
+                        android:textColor="@color/colorDarkGreyText"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroupRG"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp">
+
+                        <RadioButton
+                            android:id="@+id/radioButton1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:checked="false"
+                            android:text=""
+                            android:textColor="@color/colorGreyText"
+                            android:textSize="@dimen/_12sdp"
+                            android:theme="@style/RadioButtonTheme" />
+
+                        <RadioButton
+                            android:id="@+id/radioButton2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:checked="false"
+                            android:textColor="@color/colorGreyText"
+                            android:text=""
+                            android:textSize="@dimen/_12sdp"
+                            android:theme="@style/RadioButtonTheme" />
+
+                        <RadioButton
+                            android:id="@+id/radioButton3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:checked="false"
+                            android:textColor="@color/colorGreyText"
+                            android:text=""
+                            android:textSize="@dimen/_12sdp"
+                            android:theme="@style/RadioButtonTheme" />
+
+                        <RadioButton
+                            android:id="@+id/radioButton4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:checked="false"
+                            android:text=""
+                            android:textColor="@color/colorGreyText"
+                            android:textSize="@dimen/_12sdp"
+                            android:theme="@style/RadioButtonTheme" />
+                    </RadioGroup>
+
+
+                    <com.quiz.font.ButtonRegular
+                        android:id="@+id/btnSubmitB"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_25sdp"
+                        android:background="@drawable/btn_submit"
+                        android:text="@string/submit"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_16sdp" />
+
+                </LinearLayout>
+            </RelativeLayout>
+        </ScrollView>
+    </LinearLayout>
+
+
+</RelativeLayout>

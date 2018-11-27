@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_4sdp"
+    android:background="@drawable/item_bg"
+    android:elevation="@dimen/_3sdp"
+    android:orientation="horizontal">
+    <com.quiz.font.TextViewRegular
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:text="Test 1"
+        android:padding="@dimen/_10sdp"
+        android:textColor="@color/colorDarkBlue"
+        android:textSize="@dimen/_14sdp" />
+
+    <com.quiz.font.TextViewRegular
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:text="30/90"
+        android:padding="@dimen/_10sdp"
+        android:textColor="@color/colorDarkBlue"
+        android:textSize="@dimen/_14sdp" />
+
+    <com.quiz.font.TextViewRegular
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:text="@string/view"
+        android:padding="@dimen/_10sdp"
+        android:textColor="@color/colorDarkBlue"
+        android:textSize="@dimen/_14sdp" />
+
+</LinearLayout>

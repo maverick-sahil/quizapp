@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">QUIZ</string>
+
+    <string name="internet_error">Internet Error!</string>
+    <string name="internetconnection">       No Internet Connection, Please connect the valid internet Connection          </string>
+    <string name="server_error">Server Error!</string>
+    <string name="username">Username</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
+    <string name="password">Password</string>
+    <string name="log_id">Log in</string>
+    <string name="dont_have_an_account">Don\'t have an account?</string>
+    <string name="sign_up_now">Sign Up now</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="forgot_password_">Forgot Password</string>
+    <string name="login_with">Login with</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="or">OR</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="error">Error!</string>
+    <string name="please_enter_firstname">Please enter first name</string>
+    <string name="please_enter_lastname">Please enter last name</string>
+    <string name="please_enter_username">Please enter username</string>
+    <string name="please_enter_valid_username">Please enter valid username</string>
+    <string name="please_enter_password">Please enter password</string>
+    <string name="please_enter__confirm_password">Please enter  confirm password</string>
+    <string name="please_enter_valid_confirm_password">Your confirm password does not match</string>
+    <string name="please_enter_mobile_number">Please enter mobile number</string>
+    <string name="please_enter_valid_mobile_no">Please enter valid mobile number</string>
+
+    <string name="the_quiz">The Quiz</string>
+    <string name="welcome_to_quiz">Welcome to Quiz</string>
+
+    <string name="play_quiz">Play Quiz</string>
+    <string name="play">Play</string>
+    <string name="result">Result</string>
+    <string name="practice">Practice</string>
+    <string name="leader_board">Leader Board</string>
+    <string name="leaderboard">LeaderBoard</string>
+    <string name="time_remaining">Time Remaining</string>
+    <string name="test_clear">Tests Clear</string>
+    <string name="your_test_report">Your Test Reports</string>
+    <string name="correct_30_get_pass">Correct 30 Question to get pass</string>
+
+    <string name="submit">Submit</string>
+    <string name="more">More</string>
+    <string name="view">View</string>
+    
+    <string name="general_knowledge">General KnowLedge Test</string>
+    <string name="total_question">Total Questions</string>
+    <string name="correct_answer">Correct Answer</string>
+    <string name="in_correct_answer">Incorrect Answer</string>
+    <string name="skip_questions">Skip Question</string>
+    <string name="your_score">Your Score</string>
+</resources>

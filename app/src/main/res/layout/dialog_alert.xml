@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="@dimen/_230sdp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_margin="@dimen/_15sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_dialog_"
+            android:orientation="vertical">
+
+            <com.quiz.font.TextViewMedium
+                android:id="@+id/txtTitleTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/app_name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+
+            <com.quiz.font.TextViewRegular
+                android:id="@+id/txtMessageTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/app_name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="right|center"
+                android:orientation="horizontal">
+
+
+                <com.quiz.font.TextViewMedium
+                    android:id="@+id/txtOkTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:gravity="center"
+                    android:text="@string/cancel"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:visibility="gone" />
+
+                <com.quiz.font.TextViewMedium
+                    android:id="@+id/txtCancelTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_15sdp"
+                    android:gravity="center"
+                    android:text="@string/ok"
+                    android:textColor="@color/colorPrimaryDark" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

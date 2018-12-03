@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -60,6 +61,10 @@ public class PracticeQuizActivity extends BaseActivity {
     TextView txtQuestionTV;
     @BindView(R.id.txtTimeTV)
     TextView txtTimeTV;
+    @BindView(R.id.txtQuestionNo)
+    TextView txtQuestionNo;
+    @BindView(R.id.seekBar)
+    SeekBar seekBar;
 
     ArrayList<QuestionsModel> mQuestionsArrayList = new ArrayList<QuestionsModel>();
     int questionNum = 0;
@@ -71,6 +76,10 @@ public class PracticeQuizActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practice_quiz);
         ButterKnife.bind(this);
+
+        seekBar.getThumb().mutate().setAlpha(0);
+        seekBar.setEnabled(false);
+
         setRaioButtonFonts();
         executeQuestionsApi();
     }
@@ -84,10 +93,11 @@ public class PracticeQuizActivity extends BaseActivity {
     }
 
     private void declareCountTimer() {
-        mCountDownTimer = new CountDownTimer(10000,1000) {
+        mCountDownTimer = new CountDownTimer(10000, 1000) {
             @Override
             public void onTick(long l) {
             }
+
             @Override
             public void onFinish() {
             }
@@ -170,6 +180,7 @@ public class PracticeQuizActivity extends BaseActivity {
 
             setDataOnWidget();
             countDownTimer();
+            seekBar.setMax(mQuestionsArrayList.size());
 
             Log.e(TAG, "==Questions==" + mQuestionsArrayList.size());
         } catch (Exception e) {
@@ -192,14 +203,17 @@ public class PracticeQuizActivity extends BaseActivity {
     }
 
     private void setUpSubmitClick() {
-        if (mQuestionsArrayList.size() - 1 == questionNum){
-            startActivity(new Intent(mActivity,ResultActivity.class));
+        if (mQuestionsArrayList.size() - 1 == questionNum) {
+            Intent mIntent = new Intent(mActivity,ResultActivity.class);
+            mIntent.putExtra("LIST",mQuestionsArrayList);
+            startActivity(mIntent);
             finish();
-            showToast(mActivity,"Check Your Results");
-        }else{
+            showToast(mActivity, "Check Your Result!");
+            mCountDownTimer.cancel();
+        } else {
             ++questionNum;
             //cancel the old countDownTimer
-            if(mCountDownTimer!=null){
+            if (mCountDownTimer != null) {
                 mCountDownTimer.cancel();
             }
             setDataOnWidget();
@@ -218,9 +232,12 @@ public class PracticeQuizActivity extends BaseActivity {
         radioButton4.setText(mQuestionsModel.getCh4());
         radioButton4.setChecked(false);
         countDownTimer();
+
+        txtQuestionNo.setText((questionNum + 1) + "/" + mQuestionsArrayList.size());
+        seekBar.setProgress((questionNum + 1));
     }
 
-    private void countDownTimer(){
+    private void countDownTimer() {
         mCountDownTimer = new CountDownTimer(10000, 1000) {
 
             @Override
@@ -231,8 +248,8 @@ public class PracticeQuizActivity extends BaseActivity {
 
             @Override
             public void onTick(long millisUntilFinished) {
-                txtTimeTV.setText(""+String.format("%d : %d",
-                        TimeUnit.MILLISECONDS.toMinutes( millisUntilFinished),
+                txtTimeTV.setText("" + String.format("%d : %d",
+                        TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
                         TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
                                 TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
             }

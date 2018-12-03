@@ -114,20 +114,24 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_15sdp"
+                        android:gravity="center"
                         android:orientation="horizontal">
 
-                        <TextView
+                        <SeekBar
+                            android:id="@+id/seekBar"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/_10sdp"
                             android:layout_weight="1"
-                            android:background="@drawable/strock_bg" />
+                            android:splitTrack="false"
+                            android:layout_height="wrap_content"
+                            android:progressDrawable="@drawable/seekbar_style"
+                            />
 
                         <com.quiz.font.TextViewMedium
+                            android:id="@+id/txtQuestionNo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_10sdp"
                             android:background="@android:color/transparent"
-                            android:text="30/90"
                             android:textColor="@color/colorGreyText"
                             android:textSize="@dimen/_16sdp" />
 

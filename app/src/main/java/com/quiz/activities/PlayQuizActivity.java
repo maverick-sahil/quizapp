@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -60,6 +61,10 @@ public class PlayQuizActivity extends BaseActivity {
     TextView txtQuestionTV;
     @BindView(R.id.txtTimeTV)
     TextView txtTimeTV;
+    @BindView(R.id.txtQuestionNo)
+    TextView txtQuestionNo;
+    @BindView(R.id.seekBar)
+    SeekBar seekBar;
 
     ArrayList<QuestionsModel> mQuestionsArrayList = new ArrayList<QuestionsModel>();
 
@@ -72,6 +77,10 @@ public class PlayQuizActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_quiz);
         ButterKnife.bind(this);
+
+        seekBar.getThumb().mutate().setAlpha(0);
+        seekBar.setEnabled(false);
+
         declareCountTimer();
         setRaioButtonFonts();
         executeQuestionsApi();
@@ -173,6 +182,7 @@ public class PlayQuizActivity extends BaseActivity {
 
             setDataOnWidget();
             countDownTimer();
+            seekBar.setMax(mQuestionsArrayList.size());
 
             Log.e(TAG, "==Questions==" + mQuestionsArrayList.size());
         } catch (Exception e) {
@@ -256,6 +266,9 @@ public class PlayQuizActivity extends BaseActivity {
             }
         });
         countDownTimer();
+
+        txtQuestionNo.setText((questionNum + 1) + "/" + mQuestionsArrayList.size());
+        seekBar.setProgress((questionNum + 1));
     }
 
     private void countDownTimer() {

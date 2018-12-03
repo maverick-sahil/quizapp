@@ -22,11 +22,11 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imgBackIV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/imgProfileIV"
+                android:layout_width="@dimen/_26sdp"
+                android:layout_height="@dimen/_26sdp"
                 android:layout_gravity="center"
-                android:src="@drawable/back" />
+                android:src="@drawable/ic_account_circle_white_24dp" />
 
             <com.quiz.font.TextViewRegular
                 android:layout_width="match_parent"

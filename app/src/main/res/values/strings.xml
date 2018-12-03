@@ -1,9 +1,14 @@
 <resources>
     <string name="app_name">QUIZ</string>
 
+    <string name="facebook_app_id">380556946075145</string>
+    <string name="google_Client_ID">63076628651-9sgmpllfe2uostbp74c96gtlq5caa63n.apps.googleusercontent.com</string>
+    <string name="google_Client_Secret">KkRg9VfGXP8IhTXj4SEsPF5F</string>
+    
     <string name="internet_error">Internet Error!</string>
     <string name="internetconnection">       No Internet Connection, Please connect the valid internet Connection          </string>
     <string name="server_error">Server Error!</string>
+    <string name="are_you_want">Are you sure want to logout?</string>
     <string name="username">Username</string>
     <string name="firstname">First Name</string>
     <string name="lastname">Last Name</string>
@@ -34,6 +39,7 @@
     <string name="please_enter_valid_mobile_no">Please enter valid mobile number</string>
 
     <string name="the_quiz">The Quiz</string>
+    <string name="profile">Profile</string>
     <string name="welcome_to_quiz">Welcome to Quiz</string>
 
     <string name="play_quiz">Play Quiz</string>
@@ -50,11 +56,15 @@
     <string name="submit">Submit</string>
     <string name="more">More</string>
     <string name="view">View</string>
-    
+
     <string name="general_knowledge">General KnowLedge Test</string>
     <string name="total_question">Total Questions</string>
     <string name="correct_answer">Correct Answer</string>
     <string name="in_correct_answer">Incorrect Answer</string>
     <string name="skip_questions">Skip Question</string>
     <string name="your_score">Your Score</string>
+
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="mobile">Mobile</string>
 </resources>

@@ -23,6 +23,8 @@ public class LeaderBoardActivity extends BaseActivity {
     @BindView(R.id.btnSubmitB)
     Button btnSubmitB;
 
+   // http://amodiniadvertising.com/questions/api?usertestresults=proceed&user_email=dheeraj%40gmail.com
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

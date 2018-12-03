@@ -20,16 +20,22 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.quiz.BaseActivity;
 import com.quiz.QUIZApplication;
 import com.quiz.R;
 import com.quiz.beans.QuestionsModel;
 import com.quiz.utils.Constants;
+import com.quiz.utils.Utilities;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -70,7 +76,7 @@ public class PlayQuizActivity extends BaseActivity {
 
     int questionNum = 0;
     CountDownTimer mCountDownTimer;
-
+    private InterstitialAd interstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,9 +87,35 @@ public class PlayQuizActivity extends BaseActivity {
         seekBar.getThumb().mutate().setAlpha(0);
         seekBar.setEnabled(false);
 
-        declareCountTimer();
         setRaioButtonFonts();
         executeQuestionsApi();
+
+        // Initialize the Mobile Ads SDK.
+        MobileAds.initialize(this, "ca-app-pub-4903824083786373~2376110116");
+
+        // Create the InterstitialAd and set the adUnitId.
+        interstitialAd = new InterstitialAd(this);
+        // Defined in res/values/strings.xml
+        AdRequest adRequest = new AdRequest.Builder().build();
+        interstitialAd.setAdUnitId(getString(R.string.ad_unit_id));
+        interstitialAd.loadAd(adRequest);
+        interstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                Intent mIntent = new Intent(mActivity, ResultActivity.class);
+                mIntent.putExtra("LIST", mQuestionsArrayList);
+                startActivity(mIntent);
+                finish();
+                showToast(mActivity, "Check Your Result!");
+                mCountDownTimer.cancel();
+            }
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                Log.d("Error Load Ad", ""+errorCode);
+            }
+        });
+
+        Log.d("Current time", Calendar.getInstance().getTime()+"");
     }
 
     private void setRaioButtonFonts() {
@@ -181,7 +213,6 @@ public class PlayQuizActivity extends BaseActivity {
             }
 
             setDataOnWidget();
-            countDownTimer();
             seekBar.setMax(mQuestionsArrayList.size());
 
             Log.e(TAG, "==Questions==" + mQuestionsArrayList.size());
@@ -206,20 +237,29 @@ public class PlayQuizActivity extends BaseActivity {
 
     private void setUpSubmitClick() {
         if (mQuestionsArrayList.size() - 1 == questionNum) {
-            //startActivity(new Intent(mActivity, ResultActivity.class));
-            Intent mIntent = new Intent(mActivity,ResultActivity.class);
-            mIntent.putExtra("LIST",mQuestionsArrayList);
-            startActivity(mIntent);
-            finish();
-            showToast(mActivity, "Check Your Result!");
-            mCountDownTimer.cancel();
+            if (interstitialAd != null && interstitialAd.isLoaded()) {
+                interstitialAd.show();
+            }else {
+                //startActivity(new Intent(mActivity, ResultActivity.class));
+                Intent mIntent = new Intent(mActivity, ResultActivity.class);
+                mIntent.putExtra("LIST", mQuestionsArrayList);
+                startActivity(mIntent);
+                finish();
+                showToast(mActivity, "Check Your Result!");
+                mCountDownTimer.cancel();
+            }
         } else {
             ++questionNum;
             //cancel the old countDownTimer
             if (mCountDownTimer != null) {
                 mCountDownTimer.cancel();
+                mCountDownTimer = null;
             }
             setDataOnWidget();
+
+            if(mQuestionsArrayList.size() - 1 == questionNum){
+                btnSubmitB.setText("Submit");
+            }
         }
     }
 
@@ -259,21 +299,20 @@ public class PlayQuizActivity extends BaseActivity {
                     default:
                         mQuestionsArrayList.get(questionNum).setChooseAnswer("na");
                         mQuestionsArrayList.get(questionNum).setSkip(true);
-                        Log.e(TAG,"======NA=====");
+                        Log.e(TAG, "======NA=====");
                         break;
                 }
 
             }
         });
-        countDownTimer();
+        countDownTimer(Utilities.getMilliseconds(mQuestionsModel.getQuestiontime()));
 
         txtQuestionNo.setText((questionNum + 1) + "/" + mQuestionsArrayList.size());
         seekBar.setProgress((questionNum + 1));
     }
 
-    private void countDownTimer() {
-        mCountDownTimer = new CountDownTimer(10000, 1000) {
-
+    private void countDownTimer(long milliseconds) {
+        mCountDownTimer = new CountDownTimer(milliseconds * 1000, 1000) {
             @Override
             public void onFinish() {
                 txtTimeTV.setText("0:00");
@@ -282,7 +321,7 @@ public class PlayQuizActivity extends BaseActivity {
 
             @Override
             public void onTick(long millisUntilFinished) {
-                txtTimeTV.setText("" + String.format("%d : %d",
+                txtTimeTV.setText("" + String.format("%02d : %02d",
                         TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
                         TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
                                 TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));

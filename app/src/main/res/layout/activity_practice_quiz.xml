@@ -211,7 +211,7 @@
                    android:layout_marginRight="@dimen/_5sdp"
                    android:layout_marginTop="@dimen/_25sdp"
                    android:background="@drawable/btn_submit"
-                   android:text="@string/submit"
+                   android:text="Next"
                    android:textColor="@color/white"
                    android:textSize="@dimen/_16sdp" />
 

@@ -25,6 +25,7 @@ import com.quiz.QUIZApplication;
 import com.quiz.R;
 import com.quiz.beans.QuestionsModel;
 import com.quiz.utils.Constants;
+import com.quiz.utils.Utilities;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -90,18 +91,6 @@ public class PracticeQuizActivity extends BaseActivity {
         radioButton2.setTypeface(font);
         radioButton3.setTypeface(font);
         radioButton4.setTypeface(font);
-    }
-
-    private void declareCountTimer() {
-        mCountDownTimer = new CountDownTimer(10000, 1000) {
-            @Override
-            public void onTick(long l) {
-            }
-
-            @Override
-            public void onFinish() {
-            }
-        };
     }
 
     @Override
@@ -179,7 +168,6 @@ public class PracticeQuizActivity extends BaseActivity {
             }
 
             setDataOnWidget();
-            countDownTimer();
             seekBar.setMax(mQuestionsArrayList.size());
 
             Log.e(TAG, "==Questions==" + mQuestionsArrayList.size());
@@ -204,8 +192,8 @@ public class PracticeQuizActivity extends BaseActivity {
 
     private void setUpSubmitClick() {
         if (mQuestionsArrayList.size() - 1 == questionNum) {
-            Intent mIntent = new Intent(mActivity,ResultActivity.class);
-            mIntent.putExtra("LIST",mQuestionsArrayList);
+            Intent mIntent = new Intent(mActivity, ResultActivity.class);
+            mIntent.putExtra("LIST", mQuestionsArrayList);
             startActivity(mIntent);
             finish();
             showToast(mActivity, "Check Your Result!");
@@ -215,8 +203,13 @@ public class PracticeQuizActivity extends BaseActivity {
             //cancel the old countDownTimer
             if (mCountDownTimer != null) {
                 mCountDownTimer.cancel();
+                mCountDownTimer = null;
             }
             setDataOnWidget();
+
+            if(mQuestionsArrayList.size() - 1 == questionNum){
+                btnSubmitB.setText("Submit");
+            }
         }
     }
 
@@ -231,14 +224,14 @@ public class PracticeQuizActivity extends BaseActivity {
         radioButton3.setChecked(false);
         radioButton4.setText(mQuestionsModel.getCh4());
         radioButton4.setChecked(false);
-        countDownTimer();
+        countDownTimer(Utilities.getMilliseconds(mQuestionsModel.getQuestiontime()));
 
         txtQuestionNo.setText((questionNum + 1) + "/" + mQuestionsArrayList.size());
         seekBar.setProgress((questionNum + 1));
     }
 
-    private void countDownTimer() {
-        mCountDownTimer = new CountDownTimer(10000, 1000) {
+    private void countDownTimer(long milliseconds) {
+        mCountDownTimer = new CountDownTimer(milliseconds * 1000, 1000) {
 
             @Override
             public void onFinish() {
@@ -248,7 +241,7 @@ public class PracticeQuizActivity extends BaseActivity {
 
             @Override
             public void onTick(long millisUntilFinished) {
-                txtTimeTV.setText("" + String.format("%d : %d",
+                txtTimeTV.setText("" + String.format("%02d : %02d",
                         TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished),
                         TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
                                 TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));

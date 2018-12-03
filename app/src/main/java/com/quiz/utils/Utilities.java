@@ -312,5 +312,13 @@ public class Utilities {
         return Base64.encodeToString(byteArray, Base64.DEFAULT);
     }
 
+    public static long getMilliseconds(String time) {
+        String[] units = time.split(":"); //will break the string up into an array
+        int hours = Integer.parseInt(units[0]); //first element
+        int minutes = Integer.parseInt(units[1]); //first element
+        int seconds = Integer.parseInt(units[2]); //second element
+        int duration = 3600 * hours + 60 * minutes + seconds; //add up our values
+        return duration;
+    }
 
 }

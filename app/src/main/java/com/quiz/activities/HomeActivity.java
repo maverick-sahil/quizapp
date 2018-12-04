@@ -17,8 +17,8 @@ import butterknife.OnClick;
 public class HomeActivity extends BaseActivity {
     Activity mActivity = HomeActivity.this;
     String TAG = HomeActivity.this.getClass().getSimpleName();
-    @BindView(R.id.imgBackIV)
-    ImageView imgBackIV;
+    @BindView(R.id.imgProfileIV)
+    ImageView imgProfileIV;
     @BindView(R.id.imgDashboardIV)
     ImageView imgDashboardIV;
     @BindView(R.id.playQuizLL)
@@ -38,11 +38,11 @@ public class HomeActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.imgBackIV, R.id.imgDashboardIV, R.id.playQuizLL, R.id.practiceQuizLL, R.id.leaderBoardLL})
+    @OnClick({R.id.imgProfileIV, R.id.imgDashboardIV, R.id.playQuizLL, R.id.practiceQuizLL, R.id.leaderBoardLL})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.imgBackIV:
-                onBackPressed();
+            case R.id.imgProfileIV:
+                startActivity(new Intent(mActivity,ProfileActivity.class));
                 break;
             case R.id.imgDashboardIV:
                 break;

@@ -81,6 +81,7 @@ public class PracticeQuizActivity extends BaseActivity {
         seekBar.getThumb().mutate().setAlpha(0);
         seekBar.setEnabled(false);
 
+        declareCountTimer();
         setRaioButtonFonts();
         executeQuestionsApi();
     }
@@ -91,6 +92,18 @@ public class PracticeQuizActivity extends BaseActivity {
         radioButton2.setTypeface(font);
         radioButton3.setTypeface(font);
         radioButton4.setTypeface(font);
+    }
+
+    private void declareCountTimer() {
+        mCountDownTimer = new CountDownTimer(10000, 1000) {
+            @Override
+            public void onTick(long l) {
+            }
+
+            @Override
+            public void onFinish() {
+            }
+        };
     }
 
     @Override
@@ -195,9 +208,19 @@ public class PracticeQuizActivity extends BaseActivity {
             Intent mIntent = new Intent(mActivity, ResultActivity.class);
             mIntent.putExtra("LIST", mQuestionsArrayList);
             startActivity(mIntent);
+        if (mQuestionsArrayList.size() - 1 == questionNum) {
+            if (mCountDownTimer != null) {
+                mCountDownTimer.cancel();
+            }
+
+            Intent mIntent = new Intent(mActivity,ResultActivity.class);
+            mIntent.putExtra("LIST",mQuestionsArrayList);
+            startActivity(mIntent);
             finish();
             showToast(mActivity, "Check Your Result!");
             mCountDownTimer.cancel();
+        } else {
+            showToast(mActivity, "Check Your Result!");
         } else {
             ++questionNum;
             //cancel the old countDownTimer
@@ -216,6 +239,9 @@ public class PracticeQuizActivity extends BaseActivity {
     private void setDataOnWidget() {
         QuestionsModel mQuestionsModel = mQuestionsArrayList.get(questionNum);
         txtQuestionTV.setText(mQuestionsModel.getQuestion());
+
+        radioGroupRG.clearCheck();
+
         radioButton1.setText(mQuestionsModel.getCh1());
         radioButton1.setChecked(false);
         radioButton2.setText(mQuestionsModel.getCh2());
@@ -228,6 +254,39 @@ public class PracticeQuizActivity extends BaseActivity {
 
         txtQuestionNo.setText((questionNum + 1) + "/" + mQuestionsArrayList.size());
         seekBar.setProgress((questionNum + 1));
+
+
+        radioGroupRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton rb = (RadioButton) group.findViewById(checkedId);
+                switch (checkedId) {
+                    case R.id.radioButton1:
+                        mQuestionsArrayList.get(questionNum).setChooseAnswer("ch1");
+                        mQuestionsArrayList.get(questionNum).setSkip(false);
+                        break;
+                    case R.id.radioButton2:
+                        mQuestionsArrayList.get(questionNum).setChooseAnswer("ch2");
+                        mQuestionsArrayList.get(questionNum).setSkip(false);
+                        break;
+                    case R.id.radioButton3:
+                        mQuestionsArrayList.get(questionNum).setChooseAnswer("ch3");
+                        mQuestionsArrayList.get(questionNum).setSkip(false);
+                        break;
+                    case R.id.radioButton4:
+                        mQuestionsArrayList.get(questionNum).setChooseAnswer("ch4");
+                        mQuestionsArrayList.get(questionNum).setSkip(false);
+                        break;
+                    default:
+                        mQuestionsArrayList.get(questionNum).setChooseAnswer("na");
+                        mQuestionsArrayList.get(questionNum).setSkip(true);
+                        Log.e(TAG,"======NA=====");
+                        break;
+                }
+
+            }
+        });
+        countDownTimer();
     }
 
     private void countDownTimer(long milliseconds) {
@@ -236,7 +295,9 @@ public class PracticeQuizActivity extends BaseActivity {
             @Override
             public void onFinish() {
                 txtTimeTV.setText("0:00");
-                setUpSubmitClick();
+                if (mQuestionsArrayList.size() - 1 < questionNum) {
+                    setUpSubmitClick();
+                }
             }
 
             @Override

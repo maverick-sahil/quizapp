@@ -248,6 +248,14 @@ public class PlayQuizActivity extends BaseActivity {
                 showToast(mActivity, "Check Your Result!");
                 mCountDownTimer.cancel();
             }
+            if (mCountDownTimer != null) {
+                mCountDownTimer.cancel();
+            }
+            Intent mIntent = new Intent(mActivity,ResultActivity.class);
+            mIntent.putExtra("LIST",mQuestionsArrayList);
+            startActivity(mIntent);
+            finish();
+            showToast(mActivity, "Check Your Result!");
         } else {
             ++questionNum;
             //cancel the old countDownTimer
@@ -316,7 +324,9 @@ public class PlayQuizActivity extends BaseActivity {
             @Override
             public void onFinish() {
                 txtTimeTV.setText("0:00");
-                setUpSubmitClick();
+                if (mQuestionsArrayList.size() - 1 < questionNum) {
+                    setUpSubmitClick();
+                }
             }
 
             @Override

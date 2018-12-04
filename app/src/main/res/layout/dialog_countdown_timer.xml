@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#BB000000"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <com.quiz.font.TextViewRegular
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quiz starts in"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sdp" />
+
+        <com.quiz.font.TextViewMedium
+            android:layout_marginTop="@dimen/_5sdp"
+            android:id="@+id/textViewCountdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_30sdp" />
+
+    </LinearLayout>
+
+</LinearLayout>

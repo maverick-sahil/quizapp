@@ -205,21 +205,15 @@ public class PracticeQuizActivity extends BaseActivity {
 
     private void setUpSubmitClick() {
         if (mQuestionsArrayList.size() - 1 == questionNum) {
+            if (mCountDownTimer != null) {
+                mCountDownTimer.cancel();
+                mCountDownTimer = null;
+            }
+
             Intent mIntent = new Intent(mActivity, ResultActivity.class);
             mIntent.putExtra("LIST", mQuestionsArrayList);
             startActivity(mIntent);
-        if (mQuestionsArrayList.size() - 1 == questionNum) {
-            if (mCountDownTimer != null) {
-                mCountDownTimer.cancel();
-            }
-
-            Intent mIntent = new Intent(mActivity,ResultActivity.class);
-            mIntent.putExtra("LIST",mQuestionsArrayList);
-            startActivity(mIntent);
             finish();
-            showToast(mActivity, "Check Your Result!");
-            mCountDownTimer.cancel();
-        } else {
             showToast(mActivity, "Check Your Result!");
         } else {
             ++questionNum;
@@ -230,7 +224,7 @@ public class PracticeQuizActivity extends BaseActivity {
             }
             setDataOnWidget();
 
-            if(mQuestionsArrayList.size() - 1 == questionNum){
+            if (mQuestionsArrayList.size() - 1 == questionNum) {
                 btnSubmitB.setText("Submit");
             }
         }
@@ -262,31 +256,30 @@ public class PracticeQuizActivity extends BaseActivity {
                 RadioButton rb = (RadioButton) group.findViewById(checkedId);
                 switch (checkedId) {
                     case R.id.radioButton1:
-                        mQuestionsArrayList.get(questionNum).setChooseAnswer("ch1");
+                        mQuestionsArrayList.get(questionNum).setChooseAnswer(rb.getText().toString());
                         mQuestionsArrayList.get(questionNum).setSkip(false);
                         break;
                     case R.id.radioButton2:
-                        mQuestionsArrayList.get(questionNum).setChooseAnswer("ch2");
+                        mQuestionsArrayList.get(questionNum).setChooseAnswer(rb.getText().toString());
                         mQuestionsArrayList.get(questionNum).setSkip(false);
                         break;
                     case R.id.radioButton3:
-                        mQuestionsArrayList.get(questionNum).setChooseAnswer("ch3");
+                        mQuestionsArrayList.get(questionNum).setChooseAnswer(rb.getText().toString());
                         mQuestionsArrayList.get(questionNum).setSkip(false);
                         break;
                     case R.id.radioButton4:
-                        mQuestionsArrayList.get(questionNum).setChooseAnswer("ch4");
+                        mQuestionsArrayList.get(questionNum).setChooseAnswer(rb.getText().toString());
                         mQuestionsArrayList.get(questionNum).setSkip(false);
                         break;
                     default:
                         mQuestionsArrayList.get(questionNum).setChooseAnswer("na");
                         mQuestionsArrayList.get(questionNum).setSkip(true);
-                        Log.e(TAG,"======NA=====");
+                        Log.e(TAG, "======NA=====");
                         break;
                 }
 
             }
         });
-        countDownTimer();
     }
 
     private void countDownTimer(long milliseconds) {

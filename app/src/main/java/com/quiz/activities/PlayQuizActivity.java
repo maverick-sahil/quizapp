@@ -289,19 +289,19 @@ public class PlayQuizActivity extends BaseActivity {
                 RadioButton rb = (RadioButton) group.findViewById(checkedId);
                 switch (checkedId) {
                     case R.id.radioButton1:
-                        mQuestionsArrayList.get(questionNum).setChooseAnswer("ch1");
+                        mQuestionsArrayList.get(questionNum).setChooseAnswer(rb.getText().toString());
                         mQuestionsArrayList.get(questionNum).setSkip(false);
                         break;
                     case R.id.radioButton2:
-                        mQuestionsArrayList.get(questionNum).setChooseAnswer("ch2");
+                        mQuestionsArrayList.get(questionNum).setChooseAnswer(rb.getText().toString());
                         mQuestionsArrayList.get(questionNum).setSkip(false);
                         break;
                     case R.id.radioButton3:
-                        mQuestionsArrayList.get(questionNum).setChooseAnswer("ch3");
+                        mQuestionsArrayList.get(questionNum).setChooseAnswer(rb.getText().toString());
                         mQuestionsArrayList.get(questionNum).setSkip(false);
                         break;
                     case R.id.radioButton4:
-                        mQuestionsArrayList.get(questionNum).setChooseAnswer("ch4");
+                        mQuestionsArrayList.get(questionNum).setChooseAnswer(rb.getText().toString());
                         mQuestionsArrayList.get(questionNum).setSkip(false);
                         break;
                     default:

@@ -101,7 +101,7 @@ public class SignUpActivity extends BaseActivity {
         String strUserName = usernameET.getText().toString().trim();
         String strMobileNumber = mobileNumberET.getText().toString().trim();
         String strPassword = passwordETL.getText().toString().trim();
-        String strAPIUrl = Constants.SIGNUP + "&fname=" + strFirstName + "&lname=" + strLastName + "&email=" + strUserName + "&mobileno=" + strMobileNumber + "&password=" + strPassword;
+        String strAPIUrl = Constants.SIGNUP + "&fname=" + strFirstName + "&lname=" + strLastName + "&email=" + strUserName + "&mobile=" + strMobileNumber + "&password=" + strPassword;
         showProgressDialog(mActivity);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, strAPIUrl,
                 new Response.Listener<String>() {
@@ -152,9 +152,11 @@ public class SignUpActivity extends BaseActivity {
                 QUIZPreference.writeString(mActivity, QUIZPreference.USER_LASTNAME, mDataObj.getString("lastname"));
                 if (!mDataObj.isNull("mobile"))
                     QUIZPreference.writeString(mActivity, QUIZPreference.USER_MOBILENO, mDataObj.getString("mobile"));
-                startActivity(new Intent(mActivity, HomeActivity.class));
+//                startActivity(new Intent(mActivity, HomeActivity.class));
+//                finish();
+//                showToast(mActivity, "SignUp Successfully");
+                startActivity(new Intent(mActivity, VerifyMobileActivity.class));
                 finish();
-                showToast(mActivity, "SignUp Sucessfully");
             } else {
                 showAlert(mActivity, getString(R.string.error), "" + mResponseObj.getString("msg"));
             }

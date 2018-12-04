@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:background="@android:color/transparent"
-                android:hint="@string/username"
+                android:hint="@string/email"
                 android:imeOptions="actionNext"
                 android:inputType="textEmailAddress"
                 android:padding="@dimen/_10sdp"

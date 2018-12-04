@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imgBackIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/back" />
+
+        <com.quiz.font.TextViewRegular
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="VERIFY MOBILE NUMBER"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_18sdp" />
+
+
+        <ImageView
+            android:id="@+id/imgDashboardIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/dashboard"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+
+    <com.quiz.font.TextViewMedium
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="Enter the OTP received"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15sdp" />
+
+    <com.quiz.font.EditTextRegular
+        android:id="@+id/editTextOtp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_13sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:backgroundTint="@color/white"
+        android:ems="5"
+        android:gravity="center"
+        android:hint="*****"
+        android:inputType="number"
+        android:maxLength="5"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
+
+
+    <com.quiz.font.ButtonRegular
+        android:id="@+id/btnVerify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_22sdp"
+        android:layout_marginRight="@dimen/_22sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:background="@drawable/bg_button"
+        android:padding="@dimen/_10sdp"
+        android:text="Verify"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/_16sdp" />
+
+
+</LinearLayout>

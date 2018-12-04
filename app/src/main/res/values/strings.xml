@@ -30,8 +30,8 @@
     <string name="error">Error!</string>
     <string name="please_enter_firstname">Please enter first name</string>
     <string name="please_enter_lastname">Please enter last name</string>
-    <string name="please_enter_username">Please enter username</string>
-    <string name="please_enter_valid_username">Please enter valid username</string>
+    <string name="please_enter_username">Please enter email</string>
+    <string name="please_enter_valid_username">Please enter valid email</string>
     <string name="please_enter_password">Please enter password</string>
     <string name="please_enter__confirm_password">Please enter  confirm password</string>
     <string name="please_enter_valid_confirm_password">Your confirm password does not match</string>

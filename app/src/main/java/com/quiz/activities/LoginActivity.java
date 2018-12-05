@@ -104,7 +104,6 @@ public class LoginActivity extends BaseActivity {
     }
     
     private void googleLoginConfig() {
-
         //Then we need a GoogleSignInOptions object
         //And we need to build it as below
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

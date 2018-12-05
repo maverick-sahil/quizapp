@@ -1,12 +1,9 @@
 package com.quiz.activities;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -17,9 +14,10 @@ import com.android.volley.toolbox.StringRequest;
 import com.quiz.BaseActivity;
 import com.quiz.QUIZApplication;
 import com.quiz.R;
+import com.quiz.font.TextViewRegular;
 import com.quiz.utils.Constants;
-import com.quiz.utils.QUIZPreference;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -29,52 +27,39 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class VerifyMobileActivity extends BaseActivity {
-    Activity mActivity = VerifyMobileActivity.this;
-    String TAG = VerifyMobileActivity.this.getClass().getSimpleName();
-    @BindView(R.id.editTextOtp)
-    EditText editTextOtp;
-    @BindView(R.id.btnVerify)
-    Button btnVerify;
+public class InformationActivity extends BaseActivity {
+    String TAG = InformationActivity.this.getClass().getSimpleName();
+    Activity mActivity = InformationActivity.this;
+    @BindView(R.id.imgBackIV)
+    ImageView imgBackIV;
+    @BindView(R.id.txtHeaderTextTV)
+    TextViewRegular txtHeaderTextTV;
+    @BindView(R.id.txtInformationTV)
+    TextViewRegular txtInformationTV;
+
+    String strType = "", strTitle = "", strContent = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_verify_otp);
+        setContentView(R.layout.activity_information);
         ButterKnife.bind(this);
-    }
-
-    @OnClick({R.id.btnVerify, R.id.imgBackIV})
-    public void onViewClicked(View mView) {
-        switch (mView.getId()) {
-            case R.id.btnVerify:
-                validate();
-                break;
-            case R.id.imgBackIV:
-                onBackPressed();
-                break;
+        if (getIntent() != null) {
+            strType = getIntent().getStringExtra("TYPE");
         }
 
-    }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-    }
-
-    private void validate() {
-        if (editTextOtp.getText().toString().trim().equals("")) {
-            showAlert(mActivity, getString(R.string.error), "Please enter OTP");
-        } else {
-            executeAPI();
-        }
+        executeAPI();
     }
 
     private void executeAPI() {
-        String strOtp = editTextOtp.getText().toString().trim();
-        String email = QUIZPreference.readString(mActivity, QUIZPreference.USER_EMAIL, "");
-        String strAPIUrl = Constants.SERVER_LINK + "?email=" + email + "&verifytoken=" + strOtp;
+        String strAPIUrl = "";
+        if (strType.equals("PP")){
+            strAPIUrl = Constants.PRIVACY_POLICY;
+        }else if (strType.equals("INFO")){
+            strAPIUrl = Constants.INFORMATION;
+        }
+        
         showProgressDialog(mActivity);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, strAPIUrl,
                 new Response.Listener<String>() {
@@ -114,17 +99,30 @@ public class VerifyMobileActivity extends BaseActivity {
 
     private void parseResponse(String response) {
         try {
-            JSONObject mJsonObject = new JSONObject(response);
-            JSONObject mResponseObj = mJsonObject.getJSONObject("response");
-            if (mResponseObj.getString("success").equals("1")) {
-//                showToast(mActivity, mResponseObj.getString("msg"));
-                startActivity(new Intent(mActivity, HomeActivity.class));
-                finish();
-            } else {
-                showAlert(mActivity, getString(R.string.error), mResponseObj.getString("msg"));
+            JSONArray mJsonArray = new JSONArray(response);
+            for (int i = 0; i < mJsonArray.length(); i++) {
+                JSONObject mJsonObject = mJsonArray.getJSONObject(i);
+                strTitle = mJsonObject.getString("title");
+                strContent = mJsonObject.getString("content");
             }
+
+            txtHeaderTextTV.setText(strTitle);
+            txtInformationTV.setText(strContent);
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @OnClick(R.id.imgBackIV)
+    public void onViewClicked() {
+        onBackPressed();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

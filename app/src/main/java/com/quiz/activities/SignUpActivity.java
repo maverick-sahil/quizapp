@@ -101,7 +101,7 @@ public class SignUpActivity extends BaseActivity {
         String strUserName = usernameET.getText().toString().trim();
         String strMobileNumber = mobileNumberET.getText().toString().trim();
         String strPassword = passwordETL.getText().toString().trim();
-        String strAPIUrl = Constants.SIGNUP + "&fname=" + strFirstName + "&lname=" + strLastName + "&email=" + strUserName + "&mobile=" + strMobileNumber + "&password=" + strPassword;
+        String strAPIUrl = Constants.SIGNUP + "&fname=" + strFirstName + "&lname=" + strLastName + "&email=" + strUserName + "&mobile=" + strMobileNumber + "&password=" + strPassword + "&status=notverified";
         showProgressDialog(mActivity);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, strAPIUrl,
                 new Response.Listener<String>() {

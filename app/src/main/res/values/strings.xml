@@ -68,4 +68,7 @@
     <string name="email">Email</string>
     <string name="mobile">Mobile</string>
     <string name="ad_unit_id">ca-app-pub-4903824083786373/4830635646</string>
+
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="information">Informations</string>
 </resources>

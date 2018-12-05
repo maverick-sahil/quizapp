@@ -90,9 +90,9 @@
             <com.quiz.font.TextViewMedium
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:background="@android:color/transparent"
                 android:text="@string/email"
-                android:layout_marginTop="@dimen/_15sdp"
                 android:textAllCaps="true"
                 android:textColor="@color/colorDarkGreyText"
                 android:textSize="@dimen/_11sdp" />
@@ -111,10 +111,10 @@
             <com.quiz.font.TextViewMedium
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:background="@android:color/transparent"
                 android:text="@string/mobile"
                 android:textAllCaps="true"
-                android:layout_marginTop="@dimen/_15sdp"
                 android:textColor="@color/colorDarkGreyText"
                 android:textSize="@dimen/_11sdp" />
 
@@ -134,5 +134,35 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/_35sdp">
+
+
+        <com.quiz.font.TextViewRegular
+            android:id="@+id/txtPrivacyTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:background="@android:color/transparent"
+            android:text="@string/privacy_policy"
+            android:textAllCaps="true"
+            android:textColor="@color/colorLeft"
+            android:textSize="@dimen/_11sdp" />
+
+        <com.quiz.font.TextViewRegular
+            android:id="@+id/txtInformationTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@android:color/transparent"
+            android:gravity="right"
+            android:text="@string/information"
+            android:textAllCaps="true"
+            android:textColor="@color/colorLeft"
+            android:textSize="@dimen/_11sdp" />
+    </LinearLayout>
 
 </RelativeLayout>

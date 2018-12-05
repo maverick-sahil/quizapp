@@ -7,24 +7,24 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <com.quiz.font.TextViewRegular
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Quiz starts in"
             android:layout_gravity="center"
+            android:text="Quiz starts in"
             android:textColor="@color/white"
             android:textSize="@dimen/_15sdp" />
 
         <com.quiz.font.TextViewMedium
-            android:layout_marginTop="@dimen/_5sdp"
             android:id="@+id/textViewCountdown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00:00"
             android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="00:00"
             android:textColor="@color/white"
             android:textSize="@dimen/_30sdp" />
 

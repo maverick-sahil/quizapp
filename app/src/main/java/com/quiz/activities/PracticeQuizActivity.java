@@ -25,7 +25,6 @@ import com.quiz.QUIZApplication;
 import com.quiz.R;
 import com.quiz.beans.QuestionsModel;
 import com.quiz.utils.Constants;
-import com.quiz.utils.Utilities;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -244,7 +243,10 @@ public class PracticeQuizActivity extends BaseActivity {
         radioButton3.setChecked(false);
         radioButton4.setText(mQuestionsModel.getCh4());
         radioButton4.setChecked(false);
-        countDownTimer(Utilities.getMilliseconds(mQuestionsModel.getQuestiontime()));
+//        countDownTimer(Utilities.getMilliseconds(mQuestionsModel.getQuestiontime()));
+        long time = Long.parseLong(mQuestionsModel.getQuestiontime()) * 1000;
+
+        countDownTimer(time);
 
         txtQuestionNo.setText((questionNum + 1) + "/" + mQuestionsArrayList.size());
         seekBar.setProgress((questionNum + 1));

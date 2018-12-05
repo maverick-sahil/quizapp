@@ -35,6 +35,10 @@ public class ProfileActivity extends BaseActivity {
     TextViewRegular txtEmailTV;
     @BindView(R.id.txtMobileTV)
     TextViewRegular txtMobileTV;
+    @BindView(R.id.txtPrivacyTV)
+    TextViewRegular txtPrivacyTV;
+    @BindView(R.id.txtInformationTV)
+    TextViewRegular txtInformationTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +49,12 @@ public class ProfileActivity extends BaseActivity {
     }
 
     private void setData() {
-        txtNameTV.setText(QUIZPreference.readString(mActivity,QUIZPreference.USER_FIRSTNAME,"") + " " + QUIZPreference.readString(mActivity,QUIZPreference.USER_LASTNAME,""));
-        txtMobileTV.setText(QUIZPreference.readString(mActivity,QUIZPreference.USER_MOBILENO,""));
-        txtEmailTV.setText(QUIZPreference.readString(mActivity,QUIZPreference.USER_EMAIL,""));
+        txtNameTV.setText(QUIZPreference.readString(mActivity, QUIZPreference.USER_FIRSTNAME, "") + " " + QUIZPreference.readString(mActivity, QUIZPreference.USER_LASTNAME, ""));
+        txtMobileTV.setText(QUIZPreference.readString(mActivity, QUIZPreference.USER_MOBILENO, ""));
+        txtEmailTV.setText(QUIZPreference.readString(mActivity, QUIZPreference.USER_EMAIL, ""));
     }
 
-    @OnClick({R.id.imgBackIV, R.id.imgLogoutIV})
+    @OnClick({R.id.imgBackIV, R.id.imgLogoutIV,R.id.txtPrivacyTV, R.id.txtInformationTV})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.imgBackIV:
@@ -58,6 +62,16 @@ public class ProfileActivity extends BaseActivity {
                 break;
             case R.id.imgLogoutIV:
                 logoutAlert();
+                break;
+            case R.id.txtPrivacyTV:
+                Intent mPPIntent = new Intent(mActivity,InformationActivity.class);
+                mPPIntent.putExtra("TYPE","PP");
+                startActivity(mPPIntent);
+                break;
+            case R.id.txtInformationTV:
+                Intent mInfoIntent = new Intent(mActivity,InformationActivity.class);
+                mInfoIntent.putExtra("TYPE","INFO");
+                startActivity(mInfoIntent);
                 break;
         }
     }

@@ -24,8 +24,8 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         setSplash();
-
         printKeyHash(SplashActivity.this);
+        //startActivity(new Intent(SplashActivity.this,HomeActivity.class));
     }
 
     private void setSplash(){
@@ -36,7 +36,6 @@ public class SplashActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
                 if (QUIZPreference.readBoolean(SplashActivity.this,QUIZPreference.IS_LOGIN,false) == true){
                     startActivity(new Intent(SplashActivity.this,HomeActivity.class));
                     finish();

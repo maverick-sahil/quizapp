@@ -13,4 +13,6 @@ public class Constants {
     public static String GOOGLE_SIGNUP = SERVER_LINK + "?signup=gmail";
     public static String FORGOT_PWD = SERVER_LINK + "?forgotpswrd=proceed"; //&email=yyyyee%40gmail.com";
     public static String QUESTIONS = SERVER_LINK + "?questions=all";
+    public static String PRIVACY_POLICY = SERVER_LINK + "?page=4";
+    public static String INFORMATION = SERVER_LINK + "?page=2";
 }
